@@ -1,8 +1,13 @@
-#🍽️ Pol-eat-heck : DB
+🍽️ Pol-eat-heck : DB
 
 
 Application web de menus à la semaine avec système de réservation réalisable pour le BDE pour un projet 4A d'ISI.
 Ce dépôt contient la base de données SQLite de l'application.
+
+
+L'ensemble des routes + schéma de la BDD est disponible sur le google Docs suivant :
+
+https://docs.google.com/document/d/1JsLK7t1UwnlfNnzxO9Em7D_7orDRNyrTF7EZwsM0-jA/edit?usp=sharing
 
 
 Autres dépôts du projet :
