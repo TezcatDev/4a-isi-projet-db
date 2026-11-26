@@ -5,3 +5,14 @@ hashed_pw VARCHAR(255) NOT NULL,
 admin BOOLEAN NOT NULL DEFAULT FALSE,
 blocked BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+
+CREATE TABLE closure (
+id INT AUTO_INCREMENT PRIMARY KEY,
+start_date DATE NOT NULL,
+end_date DATE NOT NULL,
+id_admin INT NOT NULL,
+reason VARCHAR(255),
+CONSTRAINT closure_dates CHECK (end_date >= start_date),
+CONSTRAINT fk_closure_user FOREIGN KEY (id_admin) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
