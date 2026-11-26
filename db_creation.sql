@@ -39,3 +39,15 @@ price INT NOT NULL DEFAULT 0,
 CONSTRAINT menu_quantity CHECK (quantity >= 0),
 CONSTRAINT menu_price CHECK (price >= 0)
 );
+
+
+CREATE TABLE availability (
+id INT AUTO_INCREMENT PRIMARY KEY,
+id_menu INT NOT NULL,
+start_date DATE NOT NULL,
+end_date DATE NOT NULL,
+weekday INT NOT NULL,
+CONSTRAINT availability_dates CHECK (end_date >= start_date),
+CONSTRAINT availability_weekday CHECK (weekday BETWEEN 1 AND 7),
+CONSTRAINT fk_availability_menu FOREIGN KEY (id_menu) REFERENCES menu(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
