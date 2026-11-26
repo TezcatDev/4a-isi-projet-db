@@ -16,3 +16,15 @@ reason VARCHAR(255),
 CONSTRAINT closure_dates CHECK (end_date >= start_date),
 CONSTRAINT fk_closure_user FOREIGN KEY (id_admin) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+
+CREATE TABLE product (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+description TEXT,
+quantity INT NOT NULL DEFAULT 0,
+price INT NOT NULL DEFAULT 0,
+available BOOLEAN NOT NULL DEFAULT TRUE,
+CONSTRAINT product_quantity CHECK (quantity >= 0),
+CONSTRAINT product_price CHECK (price >= 0)
+);
