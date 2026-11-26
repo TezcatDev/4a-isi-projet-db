@@ -28,3 +28,14 @@ available BOOLEAN NOT NULL DEFAULT TRUE,
 CONSTRAINT product_quantity CHECK (quantity >= 0),
 CONSTRAINT product_price CHECK (price >= 0)
 );
+
+
+CREATE TABLE menu (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+description TEXT,
+quantity INT NOT NULL DEFAULT 0,
+price INT NOT NULL DEFAULT 0,
+CONSTRAINT menu_quantity CHECK (quantity >= 0),
+CONSTRAINT menu_price CHECK (price >= 0)
+);
