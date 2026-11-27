@@ -51,3 +51,14 @@ CONSTRAINT availability_dates CHECK (end_date >= start_date),
 CONSTRAINT availability_weekday CHECK (weekday BETWEEN 1 AND 7),
 CONSTRAINT fk_availability_menu FOREIGN KEY (id_menu) REFERENCES menu(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+CREATE TABLE menu_product (
+id_menu INT NOT NULL,
+id_product INT NOT NULL,
+quantity INT NOT NULL DEFAULT 1,
+PRIMARY KEY (id_menu, id_product),
+CONSTRAINT menu_product_quantity CHECK (quantity > 0),
+CONSTRAINT fk_menu_product_menu FOREIGN KEY (id_menu) REFERENCES menu(id) ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT fk_menu_product_product FOREIGN KEY (id_product) REFERENCES product(id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
