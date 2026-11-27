@@ -62,3 +62,17 @@ CONSTRAINT menu_product_quantity CHECK (quantity > 0),
 CONSTRAINT fk_menu_product_menu FOREIGN KEY (id_menu) REFERENCES menu(id) ON UPDATE CASCADE ON DELETE CASCADE,
 CONSTRAINT fk_menu_product_product FOREIGN KEY (id_product) REFERENCES product(id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+
+CREATE TABLE orders (
+id INT AUTO_INCREMENT PRIMARY KEY,
+recovered BOOLEAN NOT NULL DEFAULT FALSE,
+order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+pickup_date DATETIME NOT NULL,
+recovered_date DATETIME NULL,
+id_user INT NOT NULL,
+price INT NOT NULL DEFAULT 0,
+CONSTRAINT orders_price CHECK (price >= 0),
+CONSTRAINT orders_pickup CHECK (pickup_date >= order_date),
+CONSTRAINT fk_orders_user FOREIGN KEY (id_user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
