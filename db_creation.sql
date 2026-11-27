@@ -76,3 +76,16 @@ CONSTRAINT orders_price CHECK (price >= 0),
 CONSTRAINT orders_pickup CHECK (pickup_date >= order_date),
 CONSTRAINT fk_orders_user FOREIGN KEY (id_user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+
+CREATE TABLE orders_menu (
+id_order INT NOT NULL,
+id_menu INT NOT NULL,
+quantity INT NOT NULL DEFAULT 1,
+price INT NOT NULL DEFAULT 0,
+PRIMARY KEY (id_order, id_menu),
+CONSTRAINT orders_menu_quantity CHECK (quantity > 0),
+CONSTRAINT orders_menu_price CHECK (price >= 0),
+CONSTRAINT fk_orders_menu_order FOREIGN KEY (id_order) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT fk_orders_menu_menu FOREIGN KEY (id_menu) REFERENCES menu(id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
